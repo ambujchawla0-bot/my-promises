@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Promise to You ❤️</title>
+<style>
+  
+  .bird {
+  position: absolute;
+  font-size: 2em;
+  color: #ff69b4; /* pink */
+  left: -10%;
+  pointer-events: none;
+  z-index: 1000;
+  animation-name: fly;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Create multiple variations using nth-child for random effect */
+.bird:nth-child(1) { top: 10%; animation-duration: 12s; animation-delay: 0s; }
+.bird:nth-child(2) { top: 25%; animation-duration: 15s; animation-delay: 2s; }
+.bird:nth-child(3) { top: 40%; animation-duration: 10s; animation-delay: 4s; }
+.bird:nth-child(4) { top: 55%; animation-duration: 18s; animation-delay: 1s; }
+.bird:nth-child(5) { top: 70%; animation-duration: 14s; animation-delay: 3s; }
+.bird:nth-child(6) { top: 30%; animation-duration: 16s; animation-delay: 5s; }
+.bird:nth-child(7) { top: 50%; animation-duration: 13s; animation-delay: 6s; }
+
+@keyframes fly {
+  0% { transform: translateX(0) rotate(0deg) scale(1); opacity: 0; }
+  10% { opacity: 1; }
+  25% { transform: translateX(25vw) rotate(-10deg) scale(1.1); }
+  50% { transform: translateX(50vw) rotate(5deg) scale(0.9); }
+  75% { transform: translateX(75vw) rotate(-5deg) scale(1.05); }
+  100% { transform: translateX(110vw) rotate(10deg) scale(1); opacity: 0; }
+}
+
+  
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #ff6fa1;
+    text-align: center;
+  }
+
+  .container {
+    max-width: 600px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    opacity: 1;
+  }
+
+#promiseImg {
+  width: 100%;       /* scales to container width */
+  max-width: 400px;  /* limits size on large screens */
+  height: auto;      /* keeps aspect ratio */
+  margin-top: 20px;
+  border-radius: 15px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+  button {
+    margin-top: 30px;
+    padding: 12px 30px;
+    font-size: 1em;
+    border: none;
+    border-radius: 30px;
+    background: #ff3e6c;
+    color: white;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  button:hover {
+    background: #ff1e4c;
+  }
+
+  .heart {
+    font-size: 3em;
+    animation: beat 1s infinite;
+  }
+
+  @keyframes beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+  }
+</style>
+</head>
+<body>
+  
+  <!-- Flying pink birds -->
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+<div class="bird">🕊️</div>
+
+
+<div class="container">
+  <!-- FRONT PAGE -->
+  <h1 id="frontTitle">Thank you for coming to my promiseland. I have some promises that I would keep for the rest of our lives, I promise 😘</h1>
+  <p id="frontSubtitle">Click below to start 💖</p>
+
+  <!-- PROMISE PAGE -->
+  <p id="promiseText" style="display:none;">[YOUR SECOND LINE HERE] </p>
+  <img id="promiseImg" src="" alt="" style="display:none;" />
+
+  <!-- BUTTON -->
+  <button id="nextBtn">Reveal Promises</button>
+
+  <!-- BACKGROUND MUSIC -->
+  <audio id="bgMusic" src="https://image2url.com/r2/default/audio/1770799544239-00338287-c363-49fc-84c3-8c1775eab544.mp3"></audio>
+</div>
+
+<script>
+// PROMISES ARRAY
+const promises = [
+  { text: "I promise to love you a little more every single day ❤️", img: "https://i.postimg.cc/1tp0RKMh/0972A890-9CA4-4B91-8389-2EB73032A8F0-2.jpg" },
+  { text: "I promise to look at you like you’re my favorite view ❤️", img: "https://i.postimg.cc/PxmbfMKj/B3C1639D-23B8-4E57-9970-4EC7717C664F.jpg" },
+  { text: "I promise to keep falling for you in new ways ❤️", img: "https://i.postimg.cc/85hdkbwG/B623DE4C-5701-4CB7-87BC-653C1CCA21AD.jpg" },
+  { text: "I promise to steal kisses when you least expect them ❤️", img: "https://i.postimg.cc/bJQ0YRLp/D0CEF948-3EBE-4849-98BF-1F9DE2CC848A.jpg" },
+  { text: "I promise to miss you even before you leave ❤️", img: "https://i.postimg.cc/526wQJp3/IMG-0251.avif" },
+  { text: "I promise to make you feel like the only girl in the room ❤️", img: "https://i.postimg.cc/HkRbQNPK/IMG-3909.avif" },
+  { text: "I promise to hold you a little tighter when life gets heavy ❤️", img: "https://i.postimg.cc/dVL8ZF4v/IMG-4510.avif" },
+  { text: "I promise to remember the way you smile when you’re shy ❤️", img: "https://i.postimg.cc/kgzWxHpC/IMG-4531.avif" },
+  { text: "I promise to choose you in front of everyone, every time ❤️", img: "https://i.postimg.cc/85VWY6DS/IMG-4764.avif" },
+  { text: "I promise to build memories with you that we’ll laugh about for years ❤️", img: "https://i.postimg.cc/rsfrzZrv/IMG-4781.avif" },
+  { text: "I promise to make ordinary days feel special with you ❤️", img: "https://i.postimg.cc/v8h9PTNP/IMG-4828.avif" },
+  { text: "I promise to keep the spark alive, not just talk about it ❤️", img: "https://i.postimg.cc/YCGWq3C7/IMG-5145.avif" },
+  { text: "I promise to love the little habits that make you, you ❤️", img: "https://i.postimg.cc/yYNR2BqJ/IMG-5597.avif" },
+  { text: "I promise to make you blush at least once a day ❤️", img: "https://i.postimg.cc/MpCjcQnX/IMG-5763.avif" },
+  { text: "I promise to be the reason you smile at your phone ❤️", img: "https://i.postimg.cc/m2hc8wMw/IMG-5773.avif" },
+  { text: "I promise to stand close to you like I belong there ❤️", img: "https://i.postimg.cc/MK4n4QbF/IMG-6341.avif" },
+  { text: "I promise to make you feel wanted, always ❤️", img: "https://i.postimg.cc/nzZj2fYr/IMG-6712.avif" },
+  { text: "I promise to dream about a future that has you in it ❤️", img: "https://i.postimg.cc/4NMYM9bD/IMG_7784.avif" },
+  { text: "I promise to hold your hand like I never want to let go ❤️", img: "https://i.postimg.cc/LXTq0QNB/IMG-7527.avif" },
+  { text: "I promise that loving you will never feel ordinary to me ❤️", img: "https://i.postimg.cc/VNHMYVX4/0e4bfea9-38b9-4f5e-9c93-97349e0963b9.jpg" }
+];
+
+let index = -1;
+const frontTitle = document.getElementById('frontTitle');
+const frontSubtitle = document.getElementById('frontSubtitle');
+const promiseText = document.getElementById('promiseText');
+const promiseImg = document.getElementById('promiseImg');
+const btn = document.getElementById('nextBtn');
+const audio = document.getElementById('bgMusic');
+
+// BUTTON CLICK EVENT
+btn.addEventListener('click', () => {
+
+  if(index === -1){
+    // First click → hide front page
+    frontTitle.style.display = 'none';
+    frontSubtitle.style.display = 'none';
+
+    // show promise elements
+    promiseText.style.display = 'block';
+    promiseImg.style.display = 'block';
+
+    // start music
+    audio.play().catch(()=>{}); // autoplay may require user interaction
+
+    btn.textContent = "Next";
+  }
+
+  index++;
+
+  if(index < promises.length){
+    // show promise image and text
+    promiseImg.src = promises[index].img;
+    promiseImg.alt = "Promise " + (index + 1);
+
+    promiseText.innerHTML = promises[index].text;
+
+  } else if(index === promises.length){
+    // final page
+    btn.style.display = 'none';
+    promiseImg.style.display = 'none';
+    promiseText.innerHTML = "And I promise to keep all this promises. I love you ❤️ <span class='heart'>❤️</span>";
+  }
+});
+</script>
+
+</body>
+</html>
